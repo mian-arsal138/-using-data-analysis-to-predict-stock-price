@@ -1,8 +1,5 @@
-**About**
 
-Developed ML/DL based a web application for stock price prediction based on real-time data.
-
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/c83dabdc-e2ef-4ec9-aebf-2bd3da5a67e1" />
+<img width="1050" height="550" alt="image" src="https://github.com/user-attachments/assets/c83dabdc-e2ef-4ec9-aebf-2bd3da5a67e1" />
 
 
 **Introduction**
@@ -26,19 +23,19 @@ The project is applicable to any business organization, providing users with sto
 
 **Technology Used**
 
-Languages: HTML, CSS, JavaScript, Python
+**Languages:** HTML, CSS, JavaScript, Python
 
-Framework: Bootstrap, Django
+**Framework:** Bootstrap, Django
 
-Machine Learning Algorithms: Multiple Linear Regression
+**Machine Learning Algorithms:** Multiple Linear Regression
 
-ML/DL Libraries: NumPy, Pandas, scikit-learn
+**ML/DL Libraries:** NumPy, Pandas, scikit-learn
 
-Database: SQLite
+**Database:** SQLite
 
-APIs: Yahoo Finance API, REST API
+**APIs:** Yahoo Finance API, REST API
 
-IDE: VS Code, Jupyter Notebook
+**IDE:** VS Code, Jupyter Notebook
 
 **Project Installation:**
 
@@ -60,7 +57,9 @@ IDE: VS Code, Jupyter Notebook
   
 **STEP 5:** Install the dependencies.
 
-  pip install -r requirements.txt          (already text attached in the project)
+  pip install -r requirements.txt   
+  
+  (already text attached in the project)
   
 **STEP 6:** Migrate the Django project. (For Windows)
 
