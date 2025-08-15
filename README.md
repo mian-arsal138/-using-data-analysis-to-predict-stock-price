@@ -1,6 +1,3 @@
-**-using-data-analysis-to-predict-stock-price**
-
-
 **About**
 
 Developed ML/DL based a web application for stock price prediction based on real-time data.
