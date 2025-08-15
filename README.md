@@ -47,7 +47,7 @@ IDE: VS Code, Jupyter Notebook
 
 **STEP 1:** Clone the repository from GitHub.
 
-  git clone https://github.com/mian-arsal138/-using-data-analysis-to-predict-stock-price
+  git clone https://github.com/mian-arsal138/-using-data-analysis-to-predict-stock-price.git
   
 **STEP 2:** Change the directory to the repository.
 
