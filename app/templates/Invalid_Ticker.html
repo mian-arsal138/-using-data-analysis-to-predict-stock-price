@@ -101,13 +101,42 @@
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-6 text-center p-4">
                         <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                        <h1 class="display-1 fw-bold">404</h1>
-                        <h1 class="mb-4">Page Not Found</h1>
+                        <h1 class="display-1 fw-bold">❌</h1>
+                        <h1 class="mb-4">Invalid Ticker Symbol</h1>
                         <p class="mb-4">
-                            We’re sorry, the ticker you have looked for does not exist in our website!
-                            Maybe go to our home page or try to use a search?
+                            {% if ticker_value %}
+                                The ticker symbol "{{ ticker_value }}" is not available or doesn't exist.
+                            {% else %}
+                                The requested ticker symbol is not available or doesn't exist.
+                            {% endif %}
                         </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="../../../">Go Back To Home</a>
+                        
+                        {% if suggested_alternatives %}
+                        <div class="mb-4">
+                            <h4 class="text-warning">Did you mean one of these?</h4>
+                            <div class="row">
+                                {% for alt_ticker, description in suggested_alternatives.items %}
+                                <div class="col-md-6 mb-2">
+                                    <div class="alert alert-info">
+                                        <strong>{{ alt_ticker }}</strong> - {{ description }}
+                                        <br>
+                                        <a href="/search" class="btn btn-sm btn-primary mt-2">Try {{ alt_ticker }}</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <p class="mb-4">
+                            <strong>Common Valid Tickers:</strong><br>
+                            AAPL (Apple), MSFT (Microsoft), GOOGL (Google), TSLA (Tesla), AMZN (Amazon), META (Meta/Facebook)
+                        </p>
+                        
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="../../../search">Try Another Ticker</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="../../../">Go Back To Home</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,8 +148,8 @@
         <div class="bg-secondary rounded-top p-4">
           <div class="row">
             <div class="col-12 col-sm-6 text-center text-sm-start">
-              <a href="https://www.linkedin.com/in/vishal-lazrus-7924091b7/"
-                >Vishal Lazrus </a
+              <a href="https://www.linkedin.com/in/m-arsal-tahir-107a98339"
+                >Arsal Tahir </a
               >
             </div>
           </div>

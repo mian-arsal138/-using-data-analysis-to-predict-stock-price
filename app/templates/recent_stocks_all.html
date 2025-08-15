@@ -5,11 +5,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Stock Market Prediction</title>
+    <title>Recent Stocks - Stock Market Prediction</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +40,6 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -61,13 +59,12 @@
                 <div class="navbar-nav w-100">
                     <a href="../" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home</a>
                     <a href="/search" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Predict</a>
-                    <a href="#" class="nav-item nav-link active"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
-                    <a href="/recent-stocks" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Recent Stocks</a>
+                    <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
+                    <a href="#" class="nav-item nav-link active"><i class="fa fa-chart-line me-2"></i>Recent Stocks</a>
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
-
 
         <!-- Content Start -->
         <div class="content">
@@ -96,70 +93,97 @@
             </nav>
             <!-- Navbar End -->
 
-
             <!-- Main Content Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">All Tickers</h6>
+                        <h6 class="mb-0">Recent Stocks - Live Market Data</h6>
                         <a href="https://finance.yahoo.com/trending-tickers" style="color: red; text-decoration: none;">External Link</a>
                     </div>
                     
-                    <!-- Search Box -->
+                    <!-- Info Box -->
                     <div class="row mb-4">
-                        <div class="col-md-6 mx-auto">
-                            <form method="GET" action="/ticker" class="d-flex">
-                                <input type="text" name="search" id="tickerSearch" class="form-control bg-dark text-white me-2" 
-                                       placeholder="Search tickers..." value="{{ search_query }}" onkeyup="filterTickers()">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </form>
-                            {% if search_query %}
-                            <div class="mt-2">
-                                <small class="text-muted">Showing results for: "{{ search_query }}"</small>
-                                <a href="/ticker" class="btn btn-sm btn-outline-secondary ms-2">Clear</a>
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert">
+                                <i class="fa fa-info-circle me-2"></i>
+                                Showing live market data for popular stocks. Data is fetched from Yahoo Finance API.
+                                <br>
+                                <small>Last updated: {{ "now"|date:"F j, Y, g:i a" }}</small>
                             </div>
-                            {% endif %}
                         </div>
                     </div>
+                    
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col">Symbol</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Last Sale</th>
-                                    <th scope="col">Net Change</th>
-                                    <th scope="col">% Change</th>
-                                    <th scope="col">Market Cap</th>
-                                    <th scope="col">Country</th>
-                                    <th scope="col">Sector</th>
-                                    <th scope="col">Industry</th>
+                                    <th scope="col">Ticker</th>
+                                    <th scope="col">Open</th>
+                                    <th scope="col">High</th>
+                                    <th scope="col">Low</th>
+                                    <th scope="col">Close</th>
+                                    <th scope="col">Adj. Close</th>
+                                    <th scope="col">Volume</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% if ticker_list %}
-                                {% for i in ticker_list %}
+                                {% if recent_stocks %}
+                                {% for stock in recent_stocks %}
                                 <tr>
-                                    <td><strong>{{i.Symbol}}</strong></td>
-                                    <td>{{i.Name}}</td>
-                                    <td>{{i.Last_Sale}}</td>
-                                    <td>{{i.Net_Change}}</td>
-                                    <td>{{i.Percent_Change}}</td>
-                                    <td>{{i.Market_Cap}}</td>
-                                    <td>{{i.Country}}</td>
-                                    <td>{{i.Sector}}</td>
-                                    <td>{{i.Industry}}</td>
+                                    <td><strong>{{stock.Ticker}}</strong></td>
+                                    <td>${{stock.Open|floatformat:2}}</td>
+                                    <td>${{stock.High|floatformat:2}}</td>
+                                    <td>${{stock.Low|floatformat:2}}</td>
+                                    <td>${{stock.Close|floatformat:2}}</td>
+                                    <td>${{stock.Adj_Close|floatformat:2}}</td>
+                                    <td>{{stock.Volume|floatformat:0}}</td>
                                 </tr>
                                 {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted">No recent stocks data available</td>
+                                </tr>
                                 {% endif %}
                             </tbody>
                         </table>
                     </div>
+                    
+                    <!-- Summary Stats -->
+                    {% if recent_stocks %}
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="card bg-dark text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Total Stocks</h5>
+                                    <h3 class="text-primary">{{ recent_stocks|length }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-dark text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Average Close</h5>
+                                    <h3 class="text-success">
+                                        ${{ recent_stocks|dictsort:"Close"|first|dictsort:"Close"|first|floatformat:2 }}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-dark text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Total Volume</h5>
+                                    <h3 class="text-warning">
+                                        {{ recent_stocks|dictsort:"Volume"|first|dictsort:"Volume"|first|floatformat:0 }}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-
             <!-- Main Content Ends -->
-
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -169,18 +193,12 @@
                              <a href="https://www.linkedin.com/in/m-arsal-tahir-107a98339"
                 >Arsal Tahir </a> 
                         </div>
-                        {% comment %} <div class="col-12 col-sm-6 text-center text-sm-end">
-                            Designed By <a href="https://www.linkedin.com/in/m-arsal-tahir-107a98339"
-                >Arsal Tahir </a
-              >
-                        </div> {% endcomment %}
                     </div>
                 </div>
             </div>
             <!-- Footer End -->
         </div>
         <!-- Content End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -200,37 +218,26 @@
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
     
-    <!-- Search Functionality -->
+    <!-- Auto-refresh script -->
     <script>
-        function filterTickers() {
-            var input = document.getElementById("tickerSearch");
-            var filter = input.value.toUpperCase();
-            var table = document.querySelector("table");
-            var tr = table.getElementsByTagName("tr");
-
-            for (var i = 1; i < tr.length; i++) {
-                var td = tr[i].getElementsByTagName("td");
-                var found = false;
-                
-                for (var j = 0; j < td.length; j++) {
-                    var cell = td[j];
-                    if (cell) {
-                        var txtValue = cell.textContent || cell.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-                
-                if (found) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
+        // Auto-refresh the page every 5 minutes to get updated data
+        setTimeout(function() {
+            location.reload();
+        }, 300000); // 5 minutes
+        
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to table rows
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(function(row) {
+                row.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#2c3e50';
+                });
+                row.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                });
+            });
+        });
     </script>
 </body>
-
 </html>

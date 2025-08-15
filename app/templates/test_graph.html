@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Graph</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #14151b;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .graph-container {
+            background-color: #1a1b1f;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Graph</h1>
+        <p>This is a test to verify that plotly graphs are working correctly.</p>
+        
+        <div class="graph-container">
+            {% autoescape off %}
+                {{ plot_div }}
+            {% endautoescape %}
+        </div>
+        
+        <a href="/" style="color: white;">Back to Home</a>
+    </div>
+</body>
+</html> 

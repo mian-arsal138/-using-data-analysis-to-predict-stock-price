@@ -43,6 +43,9 @@
     <!-- Template Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     
+    <!-- Plotly.js CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
   </head>
 
   <body>
@@ -60,7 +63,7 @@
         z-index: -1;
       "
     >
-      <source src="{% static 'imag' %}" type="video/mp4" />
+      <source src="{% static 'image/bgVideo.mp4' %}" type="video/mp4" />
     </video>
 
     <div class="container-fluid position-relative d-flex p-0">
@@ -114,6 +117,9 @@
             <a href="/ticker" class="nav-item nav-link"
               ><i class="fa fa-list-alt me-2"></i>Ticker Info</a
             >
+            <a href="/recent-stocks" class="nav-item nav-link"
+              ><i class="fa fa-chart-line me-2"></i>Recent Stocks</a
+            >
           </div>
         </nav>
       </div>
@@ -158,6 +164,7 @@
               >
                 <a href="/search" class="dropdown-item">Predict</a>
                 <a href="/ticker" class="dropdown-item">Ticker Info</a>
+                <a href="/recent-stocks" class="dropdown-item">Recent Stocks</a>
               </div>
             </div>
           </div>
@@ -202,7 +209,7 @@
           <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
               <h6 class="mb-0">Recent Stocks</h6>
-              <a href="https://finance.yahoo.com/trending-tickers">Show All</a>
+              <a href="/recent-stocks" style="color: red; text-decoration: none;">Show All</a>
             </div>
             <div class="table-responsive">
               <table
@@ -269,8 +276,8 @@
           <div class="bg-secondary rounded-top p-4">
             <div class="row">
               <div class="col-12 col-sm-6 text-center text-sm-start">
-                <a href="https://www.linkedin.com/in/vishal-lazrus-7924091b7/"
-                  >Vishal Lazrus    </br>      (This project assign by KUKBIT SL.)</a
+                <a href="https://www.linkedin.com/in/m-arsal-tahir-107a98339"
+                  > Arsal Tahir    </br>      (This project assign by Sir Junaid Ahmad.)</a
                 >
               </div>
             </div>
@@ -360,5 +367,26 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Additional JavaScript for plotly graphs -->
+    <script>
+        // Ensure plotly graphs are properly rendered
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if plotly is loaded
+            if (typeof Plotly !== 'undefined') {
+                console.log('Plotly is loaded successfully');
+                
+                // Force re-render of any plotly graphs
+                const plotlyDivs = document.querySelectorAll('[id^="plotly"]');
+                plotlyDivs.forEach(function(div) {
+                    if (div._fullData) {
+                        Plotly.newPlot(div, div._fullData, div._fullLayout);
+                    }
+                });
+            } else {
+                console.error('Plotly is not loaded');
+            }
+        });
+    </script>
   </body>
 </html>

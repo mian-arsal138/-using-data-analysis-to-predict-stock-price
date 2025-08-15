@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Specific Tickers</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f0f0f0; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .ticker { margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        h1 { color: #333; }
+        .ticker-name { font-weight: bold; font-size: 18px; }
+        .ticker-data { margin-top: 5px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Results for Specific Tickers</h1>
+        <p>Testing: AAPL, AMZN, QCOM, META, NVDA, JPM</p>
+        
+        {% for ticker, result in results.items %}
+        <div class="ticker {% if result.success %}success{% else %}error{% endif %}">
+            <div class="ticker-name">{{ ticker }}</div>
+            {% if result.success %}
+                <div class="ticker-data">
+                    <strong>Status:</strong> ✅ Success<br>
+                    <strong>Data Points:</strong> {{ result.data_points }}<br>
+                    <strong>Latest Price:</strong> ${{ result.latest_price|floatformat:2 }}<br>
+                    <strong>Date Range:</strong> {{ result.date_range }}
+                </div>
+            {% else %}
+                <div class="ticker-data">
+                    <strong>Status:</strong> ❌ Failed<br>
+                    <strong>Error:</strong> {{ result.error }}
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+        <div style="margin-top: 20px;">
+            <a href="/" style="color: #007bff; text-decoration: none;">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html> 

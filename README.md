@@ -1,125 +1,131 @@
-[//]: # (Hello welcome to my project 
-  This project is already uploaded to my GitHub https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django.git
-)
+# Stock Market Prediction with Machine Learning
 
+## About
 
-![iStock-1349355855](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/c8d3869e-363c-4b95-bf4c-2462f8172519)
-
+Developed ML/DL based a web application for stock price prediction based on real-time data. Our Stock Price Prediction with Machine Learning website, utilizing linear regression and Django, enables users to predict stock prices based on real-time data. With easy-to-use interfaces and insightful graphs, users can make informed investment decisions.
 
 ## Introduction
-<p>
-  Welcome to Stock Price Prediction with Machine Learning! My website, powered by linear regression and a Django App, provides real-time data of stock prices on the home page. To predict stock prices, simply navigate to the prediction page, enter a valid ticker value and the number of days you want to predict, and click the predict button. This page displays the predicted stock price along with the details of the searched ticker. We also generate a unique QR Code for easy access to the predicted results. On the prediction page, you'll find two graphs: the left graph shows the real-time stock price of the searched ticker for the past day, while the right graph displays the predicted stock price for the specified number of days. Additionally, our Ticker Info page provides comprehensive details about all the valid tickers accepted by the application.
-</p>
+
+Welcome to Stock Price Prediction with Machine Learning! My website, powered by linear regression and a Django App, provides real-time data of stock prices on the home page. To predict stock prices, simply navigate to the prediction page, enter a valid ticker value and the number of days you want to predict, and click the predict button. This page displays the predicted stock price along with the details of the searched ticker. We also generate a unique QR Code for easy access to the predicted results. On the prediction page, you'll find two graphs: the left graph shows the real-time stock price of the searched ticker for the past day, while the right graph displays the predicted stock price for the specified number of days. Additionally, our Ticker Info page provides comprehensive details about all the valid tickers accepted by the application.
 
 ## Aim
-<p>
-   Title: Stock Price Prediction with Machine Learning
-</p>
-<p> 
-Aim: To predict stock prices according to real-time data values fetched from API.
-</p>
+
+**Title:** Using data analysis to predict stock price
+
+**Aim:** To predict stock prices according to real-time data values fetched from API.
 
 ## Objective
-<p>
-  Develop a web application for stock price prediction based on real-time data.
-  
-</p>
+
+Develop a web application for stock price prediction based on real-time data.
 
 ## Scope
-<p>
-  The project is applicable to any business organization, providing users with stock price prediction capabilities and comprehensive summary data.
-</p>
+
+The project is applicable to any business organization, providing users with stock price prediction capabilities and comprehensive summary data.
 
 ## Technology Used
 
-- Languages: HTML, CSS, JavaScript, Python
-- Framework: Bootstrap, Django
-- Machine Learning Algorithms: Multiple Linear Regression
-- ML/DL Libraries: NumPy, Pandas, scikit-learn
-- Database: SQLite
-- APIs: Yahoo Finance API, REST API
-- IDE: VS Code, Jupyter Notebook
+- **Languages:** HTML, CSS, JavaScript, Python
+- **Framework:** Bootstrap, Django
+- **Machine Learning Algorithms:** Multiple Linear Regression
+- **ML/DL Libraries:** NumPy, Pandas, scikit-learn
+- **Database:** SQLite
+- **APIs:** Yahoo Finance API, REST API
+- **IDE:** VS Code, Jupyter Notebook
 
+## Project Installation
 
-
-
-## Project Installation:
-**STEP 1:** Clone the repository from GitHub.
+### STEP 1: Clone the repository from GitHub
 ```bash
-  git clone https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django.git
+git clone https://github.com/mian-arsal138/-using-data-analysis-to-predict-stock-price.git
 ```
 
-**STEP 2:** Change the directory to the repository.
+### STEP 2: Change the directory to the repository
 ```bash
-  cd FolderName
+cd -using-data-analysis-to-predict-stock-price
 ```
 
-**STEP 3:** Create a virtual environment
-(For Windows)
+### STEP 3: Create a virtual environment (For Windows)
 ```bash
-  python -m venv virtualenv
+python -m venv virtualenv
 ```
 
-**STEP 4:** Activate the virtual environment.
-(For Windows)
+### STEP 4: Activate the virtual environment (For Windows)
 ```bash
-  virtualenv\Scripts\activate
+virtualenv\Scripts\activate
 ```
 
-**STEP 5:** Install the dependencies.
+### STEP 5: Install the dependencies
 ```bash
-  pip install -r requirements.txt          (already text attached in the project)
+pip install -r requirements.txt
 ```
 
-**STEP 6:** Migrate the Django project.
-(For Windows)
+### STEP 6: Migrate the Django project (For Windows)
 ```bash
-  python manage.py migrate
+python manage.py migrate
 ```
 
-**STEP 7:** Run the application.
-(For Windows)
+### STEP 7: Run the application (For Windows)
 ```bash
-  python manage.py runserver
+python manage.py runserver
 ```
 
+## Features
 
-## Output Screen-shots:
-Home page displaying real-time data of stock prices
+- **Real-time Stock Data:** Get live stock prices and market data
+- **Stock Price Prediction:** Predict future stock prices using machine learning
+- **Interactive Graphs:** Visualize historical and predicted stock data
+- **QR Code Generation:** Easy access to prediction results
+- **Comprehensive Ticker Information:** Detailed information about all supported tickers
+- **User-friendly Interface:** Modern, responsive design with Bootstrap
 
-![Screenshot (342)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/754e23b7-1d8b-47df-92c2-50d8abdb0f5b)
+## Project Structure
 
-![Screenshot (343)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/a76afff4-c812-4db1-8e1d-64097a1cd178)
+```
+-Stock-market-Prediction-with-Machine-Learning-Django/
+├── app/                    # Main Django application
+│   ├── Data/              # CSV files with ticker data
+│   ├── static/            # CSS, JS, and image files
+│   ├── templates/         # HTML templates
+│   ├── models.py          # Database models
+│   └── views.py           # View functions
+├── core/                  # Django project settings
+│   ├── settings.py        # Project configuration
+│   └── urls.py           # URL routing
+├── requirements.txt       # Python dependencies
+└── manage.py             # Django management script
+```
 
+## Usage
 
-Prediction page where users enter valid ticker value and number of days
-![Screenshot (345)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/b1c4e87c-9d94-4da9-986f-e471f7129d4f)
+1. **Home Page:** View real-time stock prices and market overview
+2. **Search Page:** Enter a ticker symbol and number of days for prediction
+3. **Results Page:** View predicted prices with interactive graphs
+4. **Ticker Info:** Browse comprehensive information about all supported tickers
 
-Prediction page displaying predicted stock price, ticker details, and QR Code.
-![Screenshot (346)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/6814ac70-6079-4d8b-aef8-3c2959a82a1d)
+## Screenshots
 
+### Homepage with active stocks
+![Homepage](screenshots/homepage.png)
 
- Left graph shows real-time stock price for past day, right graph shows predicted stock price for specified days
- ![Screenshot (347)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/bdfb6e97-7fca-45e5-afc0-42c861305f9a)
+### Search ticker value page
+![Search Page](screenshots/search.png)
 
+### Result page with information and prediction graph
+![Results](screenshots/results.png)
 
-Ticker Info page displaying details of valid tickers
-![Screenshot (348)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/faa1429f-81a3-4988-8638-c3b5d28bca9c)
+### All ticker symbols and names
+![Ticker Info](screenshots/tickers.png)
 
-Overview of code section
+## Conclusion
 
-![Screenshot (349)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/e490bab6-e758-4cef-a09c-4c2eb99a773a)
-![Screenshot (350)](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/assets/83393190/a45cf9c2-6a48-4e02-aab1-d04ff53ac5d2)
+Our Stock Price Prediction with Machine Learning website, utilizing linear regression and Django, enables users to predict stock prices based on real-time data. With easy-to-use interfaces and insightful graphs, users can make informed investment decisions. We provide comprehensive ticker information and ensure accurate predictions through our machine learning algorithms.
 
-## Conclusion:
-Our Stock Price Prediction with Machine Learning website, utilizing linear regression and Django, enables users to predict stock prices based on real-time data.
-With easy-to-use interfaces and insightful graphs, users can make informed investment decisions.
-We provide comprehensive ticker information and ensure accurate predictions through our machine learning algorithms.
+## Contributing
 
-## Report PDF  of Project.
-[Final Report.pdf](https://github.com/vishal815/-Stock-market-Prediction-with-Machine-Learning-Django/files/11960207/Final.Report.KUKBIT.pdf)
+Feel free to submit issues and enhancement requests!
 
+## License
 
+This project is licensed under the MIT License.
 
 ## Thank you!
-

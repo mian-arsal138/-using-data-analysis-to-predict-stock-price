@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Data</title>
+    <style>
+        body {
+            background-color: #14151b;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .debug-section {
+            background-color: #1a1b1f;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .data-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2a2b2f;
+            border-radius: 5px;
+        }
+        pre {
+            background-color: #2a2b2f;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debug Data Information</h1>
+        
+        <div class="debug-section">
+            <h2>Ticker: {{ debug_info.ticker }}</h2>
+            
+            <div class="data-item">
+                <strong>Data Shape:</strong> {{ debug_info.data_shape }}
+            </div>
+            
+            <div class="data-item">
+                <strong>Columns:</strong>
+                <pre>{{ debug_info.columns|pprint }}</pre>
+            </div>
+            
+            <div class="data-item">
+                <strong>Index:</strong>
+                <pre>{{ debug_info.index|pprint }}</pre>
+            </div>
+            
+            <div class="data-item">
+                <strong>Sample Data:</strong>
+                <pre>{{ debug_info.sample_data|pprint }}</pre>
+            </div>
+        </div>
+        
+        <a href="/" style="color: white;">Back to Home</a>
+    </div>
+</body>
+</html> 

@@ -22,6 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('search/', search),
+    path('test-graph/', test_graph),
+    path('debug-data/', debug_data),
+    path('test-data-structure/', test_data_structure),
+    path('test-dashboard/', test_dashboard),
+    path('test-specific-tickers/', test_specific_tickers),
+    path('debug-ticker-data/', debug_ticker_data),
     path('predict/<str:ticker_value>/<str:number_of_days>/', predict),
     path('ticker/', ticker),
+    path('recent-stocks/', recent_stocks_all),
 ]

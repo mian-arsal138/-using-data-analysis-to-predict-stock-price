@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Ticker Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f0f0f0; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        .ticker { margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        h1, h2 { color: #333; }
+        .ticker-name { font-weight: bold; font-size: 16px; }
+        .ticker-data { margin-top: 5px; color: #666; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debug Ticker Data Structure</h1>
+        
+        <div class="section">
+            <h2>Overall Data Information</h2>
+            <p><strong>Tickers:</strong> {{ debug_info.tickers|join:", " }}</p>
+            <p><strong>Data Shape:</strong> {{ debug_info.data_shape }}</p>
+            <p><strong>Column Levels:</strong> {{ debug_info.column_levels }}</p>
+            <p><strong>Level 0 Values:</strong> {{ debug_info.level_0_values|join:", " }}</p>
+            <p><strong>Level 1 Values:</strong> {{ debug_info.level_1_values|join:", " }}</p>
+        </div>
+        
+        <div class="section">
+            <h2>Individual Ticker Results</h2>
+            {% for ticker, result in debug_info.ticker_results.items %}
+            <div class="ticker {% if result.found %}success{% else %}error{% endif %}">
+                <div class="ticker-name">{{ ticker }}</div>
+                {% if result.found %}
+                    <div class="ticker-data">
+                        <strong>Status:</strong> ✅ Found<br>
+                        <strong>Data Points:</strong> {{ result.data_points }}<br>
+                        <strong>Has Adj Close:</strong> {{ result.has_adj_close }}<br>
+                        <strong>Columns:</strong> {{ result.columns|join:", " }}
+                    </div>
+                {% else %}
+                    <div class="ticker-data">
+                        <strong>Status:</strong> ❌ Not Found<br>
+                        <strong>Error:</strong> {{ result.error }}
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="section">
+            <h2>Sample Data (First 5 rows)</h2>
+            <pre>{{ debug_info.sample_data|pprint }}</pre>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="/" style="color: #007bff; text-decoration: none;">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html> 

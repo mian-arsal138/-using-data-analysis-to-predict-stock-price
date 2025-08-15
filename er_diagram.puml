@@ -1,0 +1,170 @@
+@startuml Stock Market Prediction ER Diagram
+
+!define table(x) class x << (T,#FFAAAA) >>
+!define view(x) class x << (V,#AAFFAA) >>
+!define external(x) class x << (E,#AAAAFF) >>
+
+' Database Entities
+table(Project) {
+  +id: Integer (PK)
+  --
+  name: CharField(200)
+  start_date: DateField
+  responsible_id: Integer (FK)
+  week_number: CharField(2)
+  end_date: DateField
+  --
+  created_at: DateTimeField
+  updated_at: DateTimeField
+}
+
+table(User) {
+  +id: Integer (PK)
+  --
+  username: CharField(150)
+  first_name: CharField(150)
+  last_name: CharField(150)
+  email: EmailField
+  password: CharField(128)
+  is_staff: BooleanField
+  is_active: BooleanField
+  is_superuser: BooleanField
+  date_joined: DateTimeField
+  last_login: DateTimeField
+  --
+  created_at: DateTimeField
+  updated_at: DateTimeField
+}
+
+' External Data Sources
+external(StockData) {
+  +ticker: String
+  --
+  open_price: Decimal
+  high_price: Decimal
+  low_price: Decimal
+  close_price: Decimal
+  adj_close: Decimal
+  volume: Integer
+  date: Date
+  --
+  source: String
+  timestamp: DateTime
+}
+
+external(TickerInfo) {
+  +symbol: String (PK)
+  --
+  name: String
+  last_sale: Decimal
+  net_change: Decimal
+  percent_change: Decimal
+  market_cap: String
+  country: String
+  ipo_year: Integer
+  volume: Integer
+  sector: String
+  industry: String
+}
+
+' Machine Learning Models
+view(PredictionModel) {
+  +id: Integer (PK)
+  --
+  ticker: String
+  model_type: String
+  confidence_score: Float
+  prediction_days: Integer
+  created_at: DateTime
+  --
+  features: JSONField
+  model_parameters: JSONField
+}
+
+view(StockPrediction) {
+  +id: Integer (PK)
+  --
+  ticker: String
+  prediction_date: Date
+  predicted_price: Decimal
+  confidence: Float
+  model_id: Integer (FK)
+  --
+  created_at: DateTime
+}
+
+' Django System Tables
+table(django_migrations) {
+  +id: Integer (PK)
+  --
+  app: CharField
+  name: CharField
+  applied: DateTimeField
+}
+
+table(django_content_type) {
+  +id: Integer (PK)
+  --
+  app_label: CharField
+  model: CharField
+}
+
+table(django_admin_log) {
+  +id: Integer (PK)
+  --
+  action_time: DateTimeField
+  object_id: TextField
+  object_repr: CharField
+  action_flag: SmallIntegerField
+  change_message: TextField
+  content_type_id: Integer (FK)
+  user_id: Integer (FK)
+}
+
+table(django_session) {
+  +session_key: CharField (PK)
+  --
+  session_data: TextField
+  expire_date: DateTimeField
+}
+
+' Relationships
+User ||--o{ Project : "responsible"
+Project }o--|| User : "belongs_to"
+
+' External data relationships (conceptual)
+StockData ||--o{ StockPrediction : "feeds_into"
+TickerInfo ||--o{ StockPrediction : "describes"
+PredictionModel ||--o{ StockPrediction : "generates"
+
+' Django system relationships
+User ||--o{ django_admin_log : "performs"
+django_content_type ||--o{ django_admin_log : "references"
+
+' Notes
+note right of Project
+  Custom model for project management
+  with week number calculation
+end note
+
+note right of StockData
+  External data from yfinance API
+  Real-time stock market data
+end note
+
+note right of TickerInfo
+  Static data from CSV files
+  Company information and metadata
+end note
+
+note right of PredictionModel
+  Machine learning models
+  Linear Regression for price prediction
+end note
+
+note right of StockPrediction
+  Generated predictions
+  Based on historical data analysis
+end note
+
+@enduml 

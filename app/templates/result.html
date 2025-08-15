@@ -29,6 +29,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    <!-- Plotly.js CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -213,9 +216,8 @@
         <div class="bg-secondary rounded-top p-4">
           <div class="row">
             <div class="col-12 col-sm-6 text-center text-sm-start">
-              <a href="https://www.linkedin.com/in/vishal-lazrus-7924091b7/"
-                >Vishal Lazrus </a
-              >
+              <a href="https://www.linkedin.com/in/m-arsal-tahir-107a98339"
+                >Arsal Tahir </a>
             </div>
           </div>
         </div>
@@ -242,6 +244,27 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Additional JavaScript for plotly graphs -->
+    <script>
+        // Ensure plotly graphs are properly rendered
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if plotly is loaded
+            if (typeof Plotly !== 'undefined') {
+                console.log('Plotly is loaded successfully');
+                
+                // Force re-render of any plotly graphs
+                const plotlyDivs = document.querySelectorAll('[id^="plotly"]');
+                plotlyDivs.forEach(function(div) {
+                    if (div._fullData) {
+                        Plotly.newPlot(div, div._fullData, div._fullLayout);
+                    }
+                });
+            } else {
+                console.error('Plotly is not loaded');
+            }
+        });
+    </script>
 </body>
 
 </html>
