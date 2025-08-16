@@ -1,5 +1,7 @@
 # Stock Market Prediction with Machine Learning
 
+<img width="1050" height="550" alt="image" src="https://github.com/user-attachments/assets/c83dabdc-e2ef-4ec9-aebf-2bd3da5a67e1" />
+
 ## About
 
 Developed ML/DL based a web application for stock price prediction based on real-time data. Our Stock Price Prediction with Machine Learning website, utilizing linear regression and Django, enables users to predict stock prices based on real-time data. With easy-to-use interfaces and insightful graphs, users can make informed investment decisions.
@@ -105,16 +107,23 @@ python manage.py runserver
 ## Screenshots
 
 ### Homepage with active stocks
-![Homepage](screenshots/homepage.png)
+<img width="1042" height="614" alt="image" src="https://github.com/user-attachments/assets/785a3861-a2b8-4f29-9971-124dec8e65be" />
+
+<img width="1042" height="640" alt="image" src="https://github.com/user-attachments/assets/67179074-5923-44b9-97de-1d6cba0093d1" />
 
 ### Search ticker value page
-![Search Page](screenshots/search.png)
+<img width="1043" height="572" alt="image" src="https://github.com/user-attachments/assets/b3896833-af68-45ca-8f33-cd1d62e185ce" />
 
 ### Result page with information and prediction graph
-![Results](screenshots/results.png)
+<img width="1042" height="571" alt="image" src="https://github.com/user-attachments/assets/e409b8cd-ed7c-4fb9-9b8b-8ef47b8c567f" />
+
+<img width="1048" height="626" alt="image" src="https://github.com/user-attachments/assets/ef4a8319-7496-4777-9734-1903db1f980d" />
 
 ### All ticker symbols and names
-![Ticker Info](screenshots/tickers.png)
+<img width="1043" height="588" alt="image" src="https://github.com/user-attachments/assets/e69d8628-8594-43dd-b92b-3adedf265634" />
+
+### Error page
+<img width="1044" height="605" alt="image" src="https://github.com/user-attachments/assets/55c85d29-be31-4fb5-8b01-6c03c150c9ce" />
 
 ## Conclusion
 
